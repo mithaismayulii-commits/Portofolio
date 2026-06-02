@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitha Ismayuli — Portfolio</title>
+  <meta name="description" content="UI/UX Designer & Technical Writer — Fresh Graduate Information Systems, GPA 3.84. Jakarta, Indonesia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <style>
+    /* ============================================================
+       TOKENS
+    ============================================================ */
+    :root {
+      --ruby:        #C0392B;
+      --ruby-dark:   #96281B;
+      --ruby-mid:    #D44030;
+      --ruby-light:  #E8917D;
+      --ruby-soft:   #fdf2f0;
+      --ruby-border: #f5cdc7;
+
+      --gray-50:  #fafafa;
+      --gray-100: #f4f4f4;
+      --gray-200: #e8e8e8;
+      --gray-300: #d0d0d0;
+      --gray-400: #a0a0a0;
+      --gray-500: #787878;
+      --gray-600: #505050;
+      --gray-800: #222222;
+      --gray-900: #111111;
+      --white:    #ffffff;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  14px;
+      --radius-xl:  20px;
+      --radius-full: 999px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+      --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+
+      --transition: 0.2s ease;
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font-body); border: none; background: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       LAYOUT WRAPPER — Instagram-style centered feed
+    ============================================================ */
+    .page-shell {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 480px) 240px;
+      grid-template-rows: auto 1fr;
+      min-height: 100vh;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       DESKTOP SIDEBAR — LEFT
+    ============================================================ */
+    .sidebar-left {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      padding: 32px 20px 32px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sidebar-logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      color: var(--gray-900);
+      padding: 8px 12px 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--gray-600);
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-link i { font-size: 22px; }
+    .nav-link:hover { background: var(--gray-100); color: var(--gray-900); }
+    .nav-link.active { color: var(--gray-900); font-weight: 600; }
+    .nav-link.active i { color: var(--ruby); }
+
+    .sidebar-hire {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: var(--ruby);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      font-size: 14px;
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .sidebar-hire:hover { background: var(--ruby-dark); transform: translateY(-1px); }
+    .sidebar-hire i { font-size: 18px; }
+
+    /* ============================================================
+       MAIN FEED
+    ============================================================ */
+    .main-feed {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      border-left: 0.5px solid var(--gray-200);
+      border-right: 0.5px solid var(--gray-200);
+      background: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ============================================================
+       MOBILE TOP BAR
+    ============================================================ */
+    .mobile-topbar {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--white);
+      border-bottom: 0.5px solid var(--gray-200);
+      padding: 12px 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-topbar .handle {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+    .mobile-topbar .icons { display: flex; gap: 16px; }
+    .mobile-topbar .icons i { font-size: 22px; color: var(--gray-900); }
+
+    /* ============================================================
+       PROFILE HEADER
+    ============================================================ */
+    .profile-header {
+      padding: 28px 24px 0;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 18px;
+    }
+
+    .avatar-wrap { flex-shrink: 0; }
+    .avatar-ring {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: conic-gradient(var(--ruby) 0%, #e74c3c 30%, #e67e22 60%, var(--ruby) 100%);
+      padding: 3px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .avatar-inner {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: var(--white);
+      padding: 2.5px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .avatar-circle {
+      width: 85px; height: 85px;
+      border-radius: 50%;
+      background: var(--ruby);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .profile-stats {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      justify-content: space-around;
+    }
+    .stat-block { text-align: center; }
+    .stat-num { font-size: 18px; font-weight: 700; color: var(--gray-900); line-height: 1.2; }
+    .stat-label { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
+
+    .profile-bio { margin-bottom: 14px; }
+    .bio-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 2px;
+    }
+    .bio-role {
+      font-size: 13px;
+      color: var(--ruby);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .bio-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .bio-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .contact-tag {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      color: var(--gray-600);
+      background: var(--gray-100);
+      border-radius: var(--radius-full);
+      padding: 4px 10px;
+      border: 0.5px solid var(--gray-200);
+      transition: background var(--transition);
+    }
+    .contact-tag:hover { background: var(--ruby-soft); color: var(--ruby-dark); border-color: var(--ruby-border); }
+    .contact-tag i { font-size: 12px; color: var(--ruby); }
+
+    .profile-actions {
+      display: flex;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+    .btn-fill {
+      flex: 1;
+      padding: 8px 0;
+      background: var(--ruby);
+      color: var(--white);
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-fill:hover { background: var(--ruby-dark); transform: translateY(-1px); }
+    .btn-outline {
+      flex: 1;
+      padding: 8px 0;
+      background: var(--white);
+      color: var(--gray-900);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: background var(--transition);
+    }
+    .btn-outline:hover { background: var(--gray-100); }
+    .btn-icon-sm {
+      padding: 8px 12px;
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .btn-icon-sm:hover { background: var(--gray-100); }
+    .btn-icon-sm i { font-size: 18px; color: var(--gray-800); }
+
+    /* ============================================================
+       HIGHLIGHTS / STORIES
+    ============================================================ */
+    .highlights-wrap {
+      overflow-x: auto;
+      display: flex;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 0.5px solid var(--gray-200);
+      scrollbar-width: none;
+    }
+    .highlights-wrap::-webkit-scrollbar { display: none; }
+    .highlight-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .highlight-ring {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--ruby);
+      padding: 2.5px;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--transition);
+    }
+    .highlight-ring:hover { transform: scale(1.06); }
+    .highlight-ring.muted { border-color: var(--gray-300); }
+    .highlight-emoji {
+      width: 55px; height: 55px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .highlight-label {
+      font-size: 11px;
+      color: var(--gray-600);
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    /* ============================================================
+       TAB BAR
+    ============================================================ */
+    .tab-bar {
+      display: flex;
+      border-top: 0.5px solid var(--gray-200);
+      border-bottom: 0.5px solid var(--gray-200);
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 100;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 12px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray-400);
+      border-bottom: 1.5px solid transparent;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .tab-btn i { font-size: 20px; }
+    .tab-btn.active { color: var(--gray-900); border-bottom-color: var(--gray-900); }
+    .tab-btn.active i { color: var(--ruby); }
+    .tab-btn span { display: none; }
+
+    /* ============================================================
+       GRID VIEW
+    ============================================================ */
+    .view { display: none; }
+    .view.visible { display: block; }
+
+    .grid-view-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .grid-card {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--gray-100);
+    }
+    .grid-card-bg {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px;
+      transition: transform var(--transition);
+    }
+    .grid-card:hover .grid-card-bg { transform: scale(1.04); }
+    .grid-card-bg .emoji { font-size: 30px; }
+    .grid-card-bg .label {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-align: center;
+      line-height: 1.3;
+    }
+    .grid-overlay {
+      position: absolute; inset: 0;
+      background: rgba(160,30,20,0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+      padding: 10px;
+    }
+    .grid-card:hover .grid-overlay { opacity: 1; }
+    .grid-overlay span {
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       FEED VIEW
+    ============================================================ */
+    .feed-post {
+      border-bottom: 0.5px solid var(--gray-200);
+      padding-bottom: 8px;
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+    }
+    .post-avatar-sm {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--ruby);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: var(--white);
+      flex-shrink: 0;
+    }
+    .post-meta { flex: 1; }
+    .post-handle { font-size: 13px; font-weight: 700; color: var(--gray-900); }
+    .post-tag { font-size: 11px; color: var(--ruby); font-weight: 500; }
+    .post-more i { font-size: 18px; color: var(--gray-400); }
+
+    .post-image {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .post-image .big-emoji { font-size: 72px; }
+    .post-image .post-subtitle {
+      font-size: 14px;
+      color: var(--gray-500);
+      font-weight: 500;
+      text-align: center;
+      padding: 0 28px;
+      line-height: 1.5;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 10px 16px 4px;
+    }
+    .post-actions i { font-size: 22px; color: var(--gray-900); cursor: pointer; transition: color var(--transition); }
+    .post-actions i:hover { color: var(--ruby); }
+    .post-actions .ml-auto { margin-left: auto; }
+    .post-likes { padding: 0 16px; font-size: 13px; font-weight: 700; color: var(--gray-900); }
+    .post-caption { padding: 3px 16px; font-size: 13px; line-height: 1.55; color: var(--gray-600); }
+    .post-caption strong { font-weight: 700; color: var(--gray-900); }
+    .post-time { padding: 2px 16px 8px; font-size: 11px; color: var(--gray-400); }
+
+    /* ============================================================
+       ABOUT VIEW
+    ============================================================ */
+    .about-inner { padding: 20px 20px 40px; }
+
+    .about-card {
+      border: 0.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-card);
+    }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      background: var(--ruby-soft);
+      border-bottom: 0.5px solid var(--ruby-border);
+    }
+    .card-head i { font-size: 18px; color: var(--ruby); }
+    .card-head span { font-size: 14px; font-weight: 700; color: var(--ruby-dark); }
+    .card-body { padding: 14px 16px; background: var(--white); }
+
+    .about-text {
+      font-size: 13.5px;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 14px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 0.5px solid var(--gray-100);
+    }
+    .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .timeline-icon {
+      width: 38px; height: 38px;
+      border-radius: var(--radius-md);
+      background: var(--ruby-soft);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .timeline-icon i { font-size: 17px; color: var(--ruby); }
+    .t-title { font-size: 14px; font-weight: 700; color: var(--gray-900); line-height: 1.3; }
+    .t-company { font-size: 13px; color: var(--ruby); font-weight: 500; margin-top: 1px; }
+    .t-period { font-size: 11.5px; color: var(--gray-400); margin-top: 2px; }
+    .t-desc { font-size: 12.5px; color: var(--gray-600); margin-top: 5px; line-height: 1.5; }
+    .gpa-pill {
+      display: inline-block;
+      background: var(--ruby-soft);
+      color: var(--ruby-dark);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      margin-top: 3px;
+      border: 0.5px solid var(--ruby-border);
+    }
+
+    .skill-group-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--gray-400);
+      margin-bottom: 8px;
+      margin-top: 12px;
+    }
+    .skill-group-label:first-child { margin-top: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
+    .chip {
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .chip-ruby { background: var(--ruby-soft); color: var(--ruby-dark); border: 0.5px solid var(--ruby-border); }
+    .chip-gray { background: var(--gray-100); color: var(--gray-600); border: 0.5px solid var(--gray-200); }
+
+    /* ============================================================
+       RIGHT SIDEBAR
+    ============================================================ */
+    .sidebar-right {
+      grid-column: 3;
+      grid-row: 1 / 3;
+      padding: 32px 0 32px 20px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-right::-webkit-scrollbar { width: 0; }
+
+    .widget-card {
+      background: var(--white);
+      border: 0.5px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-card);
+    }
+    .widget-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 12px;
+    }
+
+    .mini-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .mini-stat {
+      background: var(--gray-50);
+      border: 0.5px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      text-align: center;
+    }
+    .mini-stat .n { font-size: 20px; font-weight: 700; color: var(--ruby); line-height: 1; }
+    .mini-stat .l { font-size: 10px; color: var(--gray-500); margin-top: 3px; }
+
+    .tools-list { display: flex; flex-direction: column; gap: 8px; }
+    .tool-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--gray-700);
+    }
+    .tool-row i { font-size: 16px; color: var(--ruby); width: 18px; flex-shrink: 0; }
+    .tool-bar-wrap { flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; overflow: hidden; }
+    .tool-bar { height: 100%; background: var(--ruby); border-radius: 2px; }
+
+    .open-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ruby-soft);
+      border: 0.5px solid var(--ruby-border);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+    }
+    .open-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #27ae60;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(39,174,96,0.25);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 2px rgba(39,174,96,0.25); }
+      50% { box-shadow: 0 0 0 5px rgba(39,174,96,0.12); }
+    }
+    .open-text { font-size: 12.5px; font-weight: 600; color: var(--ruby-dark); }
+    .open-sub { font-size: 11px; color: var(--gray-500); }
+
+    /* ============================================================
+       MOBILE BOTTOM NAV
+    ============================================================ */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white);
+      border-top: 0.5px solid var(--gray-200);
+      z-index: 200;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .mobile-nav-inner {
+      display: flex;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .mobile-nav-btn {
+      flex: 1;
+      padding: 10px 0 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: var(--gray-400);
+      font-size: 10px;
+      transition: color var(--transition);
+    }
+    .mobile-nav-btn i { font-size: 22px; }
+    .mobile-nav-btn.active { color: var(--gray-900); }
+    .mobile-nav-btn.active i { color: var(--ruby); }
+    .mobile-nav-avatar {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--ruby);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700; color: var(--white);
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .view.visible { animation: fadeUp 0.28s ease; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .profile-header { animation: slideIn 0.35s ease; }
+
+    /* ============================================================
+       RESPONSIVE — TABLET (max 900px)
+    ============================================================ */
+    @media (max-width: 900px) {
+      .page-shell {
+        grid-template-columns: 72px minmax(0, 1fr);
+        grid-template-rows: auto;
+        max-width: 100%;
+      }
+      .sidebar-left {
+        grid-column: 1;
+        padding: 24px 0;
+        align-items: center;
+      }
+      .sidebar-logo { display: none; }
+      .nav-link { padding: 12px; justify-content: center; }
+      .nav-link span { display: none; }
+      .sidebar-hire span { display: none; }
+      .sidebar-hire { padding: 12px; justify-content: center; margin-top: auto; }
+      .sidebar-right { display: none; }
+      .main-feed { grid-column: 2; border-right: none; }
+      .tab-btn span { display: inline; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE (max 600px)
+    ============================================================ */
+    @media (max-width: 600px) {
+      .page-shell {
+        grid-template-columns: 1fr;
+      }
+      .sidebar-left { display: none; }
+      .sidebar-right { display: none; }
+      .main-feed {
+        grid-column: 1;
+        border: none;
+        padding-bottom: 70px;
+      }
+      .mobile-topbar { display: flex; }
+      .mobile-bottom-nav { display: block; }
+      .tab-bar {
+        position: sticky;
+        top: 53px;
+      }
+      .tab-btn span { display: none; }
+      .profile-header { padding: 20px 16px 0; }
+      .highlights-wrap { padding: 14px 16px; }
+      .avatar-ring { width: 82px; height: 82px; }
+      .avatar-inner { width: 76px; height: 76px; }
+      .avatar-circle { width: 71px; height: 71px; font-size: 22px; }
+      .profile-stats { gap: 0; }
+      .stat-num { font-size: 16px; }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .feed-footer {
+      text-align: center;
+      padding: 24px 16px 32px;
+      font-size: 11.5px;
+      color: var(--gray-400);
+      border-top: 0.5px solid var(--gray-200);
+      line-height: 1.7;
+    }
+    .feed-footer a { color: var(--ruby); }
+  </style>
+</head>
+
+<body>
+<div class="page-shell">
+
+  <!-- ============================================================
+       DESKTOP LEFT SIDEBAR
+  ============================================================ -->
+  <nav class="sidebar-left" aria-label="Navigasi utama">
+    <div class="sidebar-logo">mithaismayulii</div>
+
+    <a href="#" class="nav-link active" onclick="switchTabSidebar('grid'); return false;">
+      <i class="ti ti-home" aria-hidden="true"></i>
+      <span>Beranda</span>
+    </a>
+    <a href="#" class="nav-link" onclick="switchTabSidebar('feed'); return false;">
+      <i class="ti ti-layout-list" aria-hidden="true"></i>
+      <span>Projects</span>
+    </a>
+    <a href="#" class="nav-link" onclick="switchTabSidebar('about'); return false;">
+      <i class="ti ti-user" aria-hidden="true"></i>
+      <span>About</span>
+    </a>
+    <a href="mailto:mithaismayulii@gmail.com" class="nav-link">
+      <i class="ti ti-mail" aria-hidden="true"></i>
+      <span>Kontak</span>
+    </a>
+
+    <a href="mailto:mithaismayulii@gmail.com" class="sidebar-hire">
+      <i class="ti ti-send" aria-hidden="true"></i>
+      <span>Hire Me</span>
+    </a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN FEED
+  ============================================================ -->
+  <main class="main-feed" id="main-feed">
+
+    <!-- Mobile Top Bar -->
+    <header class="mobile-topbar" aria-label="Header mobile">
+      <div class="handle">mithaismayulii</div>
+      <div class="icons">
+        <i class="ti ti-bell" aria-hidden="true"></i>
+        <i class="ti ti-menu-2" aria-hidden="true"></i>
+      </div>
+    </header>
+
+    <!-- Profile Header -->
+    <section class="profile-header" aria-label="Profil">
+      <div class="profile-top">
+        <div class="avatar-wrap">
+          <div class="avatar-ring">
+            <div class="avatar-inner">
+              <div class="avatar-circle">MI</div>
+            </div>
+          </div>
+        </div>
+        <div class="profile-stats">
+          <div class="stat-block">
+            <div class="stat-num">9</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">3.84</div>
+            <div class="stat-label">GPA</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Internships</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-bio">
+        <div class="bio-name">Mitha Ismayuli</div>
+        <div class="bio-role">UI/UX Designer · Technical Writer · System Analyst</div>
+        <div class="bio-desc">
+          Fresh Graduate Information Systems · GPA 3.84<br>
+          Crafting intuitive interfaces &amp; precise technical docs ✦<br>
+          Jakarta, Indonesia 🇮🇩
+        </div>
+        <div class="bio-contacts">
+          <a href="mailto:mithaismayulii@gmail.com" class="contact-tag">
+            <i class="ti ti-mail" aria-hidden="true"></i>mithaismayulii@gmail.com
+          </a>
+          <a href="tel:+62895411928679" class="contact-tag">
+            <i class="ti ti-phone" aria-hidden="true"></i>+62895411928679
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-tag">
+            <i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn
+          </a>
+          <span class="contact-tag">
+            <i class="ti ti-map-pin" aria-hidden="true"></i>Jakarta
+          </span>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <a href="mailto:mithaismayulii@gmail.com" class="btn-fill">Hire Me</a>
+        <button class="btn-outline" onclick="alert('Hubungi Mitha untuk mendapatkan CV lengkap!')">Download CV</button>
+        <button class="btn-icon-sm" onclick="navigator.share ? navigator.share({title:'Mitha Ismayuli Portfolio',url:location.href}) : navigator.clipboard.writeText(location.href).then(()=>alert('Link disalin!'))">
+          <i class="ti ti-share" aria-hidden="true"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Highlights / Stories -->
+    <section class="highlights-wrap" aria-label="Highlight">
+      <div class="highlight-item">
+        <div class="highlight-ring">
+          <div class="highlight-emoji" style="background:#fdf0ee;">🎨</div>
+        </div>
+        <div class="highlight-label">UI/UX</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring">
+          <div class="highlight-emoji" style="background:#f0f4ff;">📄</div>
+        </div>
+        <div class="highlight-label">Tech Docs</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring">
+          <div class="highlight-emoji" style="background:#f0fff4;">💼</div>
+        </div>
+        <div class="highlight-label">BPO Seven</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring">
+          <div class="highlight-emoji" style="background:#fff8f0;">🖥️</div>
+        </div>
+        <div class="highlight-label">Web Dev</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring muted">
+          <div class="highlight-emoji" style="background:#f5f5f5;">🎓</div>
+        </div>
+        <div class="highlight-label">Edu</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-ring muted">
+          <div class="highlight-emoji" style="background:#fdf0ee;">✍️</div>
+        </div>
+        <div class="highlight-label">Writing</div>
+      </div>
+    </section>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar" role="tablist" aria-label="Tampilan konten">
+      <button class="tab-btn active" id="tab-grid" role="tab" aria-selected="true" onclick="switchTab('grid')">
+        <i class="ti ti-layout-grid" aria-hidden="true"></i>
+        <span>Grid</span>
+      </button>
+      <button class="tab-btn" id="tab-feed" role="tab" aria-selected="false" onclick="switchTab('feed')">
+        <i class="ti ti-layout-list" aria-hidden="true"></i>
+        <span>Projects</span>
+      </button>
+      <button class="tab-btn" id="tab-about" role="tab" aria-selected="false" onclick="switchTab('about')">
+        <i class="ti ti-user" aria-hidden="true"></i>
+        <span>About</span>
+      </button>
+    </div>
+
+    <!-- ======== GRID VIEW ======== -->
+    <div id="view-grid" class="view visible" role="tabpanel">
+      <div class="grid-view-inner">
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#fdf0ee;">
+            <div class="emoji">🍔</div>
+            <div class="label">Burger King Recon UI</div>
+          </div>
+          <div class="grid-overlay"><span>Burger King Reconciliation System — High Fidelity UI Design</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#f0f4ff;">
+            <div class="emoji">📱</div>
+            <div class="label">ESS Mobile App</div>
+          </div>
+          <div class="grid-overlay"><span>Employee Self Service Mobile App — UI/UX Design</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#fff0fb;">
+            <div class="emoji">💸</div>
+            <div class="label">Payroll Website UI</div>
+          </div>
+          <div class="grid-overlay"><span>Payroll Website — Brand-Consistent UI/UX Design</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#f0fff4;">
+            <div class="emoji">💆</div>
+            <div class="label">Aesthetic Clinic</div>
+          </div>
+          <div class="grid-overlay"><span>Aesthetic Clinic Management System — Web Interface</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#fff8f0;">
+            <div class="emoji">🚌</div>
+            <div class="label">Bus Reservation</div>
+          </div>
+          <div class="grid-overlay"><span>Bus Reservation Platform — Interface Development</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#f0f8ff;">
+            <div class="emoji">📋</div>
+            <div class="label">TSD & SOP Docs</div>
+          </div>
+          <div class="grid-overlay"><span>Technical Specification Documents & SOPs for HRIS & Payroll</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#fdf0ee;">
+            <div class="emoji">🔧</div>
+            <div class="label">HRIS Knowledge Base</div>
+          </div>
+          <div class="grid-overlay"><span>Technical Articles & Knowledge Base for HRIS System</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#f5f0ff;">
+            <div class="emoji">🎬</div>
+            <div class="label">Training Assets</div>
+          </div>
+          <div class="grid-overlay"><span>Multimedia Training Assets & Video Tutorials for Workshops</span></div>
+        </div>
+
+        <div class="grid-card">
+          <div class="grid-card-bg" style="background:#f0fff8;">
+            <div class="emoji">🗂️</div>
+            <div class="label">Jira Automation</div>
+          </div>
+          <div class="grid-overlay"><span>Automated Documentation Workflow via Jira Platform</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ======== FEED VIEW ======== -->
+    <div id="view-feed" class="view" role="tabpanel">
+
+      <article class="feed-post">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta">
+            <div class="post-handle">mithaismayulii</div>
+            <div class="post-tag">#UIUXDesign · Burger King Reconciliation</div>
+          </div>
+          <div class="post-more"><i class="ti ti-dots" aria-hidden="true"></i></div>
+        </div>
+        <div class="post-image" style="background:#fdf0ee;">
+          <div class="big-emoji">🍔</div>
+          <div class="post-subtitle">Burger King Web Reconciliation System — High Fidelity UI Design</div>
+        </div>
+        <div class="post-actions">
+          <i class="ti ti-heart" aria-hidden="true" title="Suka"></i>
+          <i class="ti ti-message-circle" aria-hidden="true" title="Komentar"></i>
+          <i class="ti ti-send" aria-hidden="true" title="Bagikan"></i>
+          <i class="ti ti-bookmark ml-auto" aria-hidden="true" title="Simpan"></i>
+        </div>
+        <div class="post-likes">84 suka</div>
+        <div class="post-caption">
+          <strong>mithaismayulii</strong> Analyzed business requirements &amp; designed high fidelity UI for Burger King's web-based reconciliation platform. Coordinated Jira ticket synchronization &amp; automated documentation workflows.
+        </div>
+        <div class="post-time">PT BPO Seven Inovasi Indonesia · Jun–Sep 2025</div>
+      </article>
+
+      <article class="feed-post">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta">
+            <div class="post-handle">mithaismayulii</div>
+            <div class="post-tag">#MobileDesign · ESS App & Payroll</div>
+          </div>
+          <div class="post-more"><i class="ti ti-dots" aria-hidden="true"></i></div>
+        </div>
+        <div class="post-image" style="background:#f0f4ff;">
+          <div class="big-emoji">📱</div>
+          <div class="post-subtitle">ESS Mobile App & Payroll Website — UI/UX with Brand Consistency</div>
+        </div>
+        <div class="post-actions">
+          <i class="ti ti-heart" aria-hidden="true"></i>
+          <i class="ti ti-message-circle" aria-hidden="true"></i>
+          <i class="ti ti-send" aria-hidden="true"></i>
+          <i class="ti ti-bookmark ml-auto" aria-hidden="true"></i>
+        </div>
+        <div class="post-likes">61 suka</div>
+        <div class="post-caption">
+          <strong>mithaismayulii</strong> Engineered UI/UX for ESS mobile app &amp; Payroll website. Authored TSD &amp; SOPs for HRIS &amp; Payroll systems. Produced multimedia training assets &amp; video tutorials for large-scale workshops.
+        </div>
+        <div class="post-time">PT BPO Seven Inovasi Indonesia · Sep 2024–Feb 2025</div>
+      </article>
+
+      <article class="feed-post">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta">
+            <div class="post-handle">mithaismayulii</div>
+            <div class="post-tag">#WebDevelopment · Aesthetic Clinic & Bus Reservation</div>
+          </div>
+          <div class="post-more"><i class="ti ti-dots" aria-hidden="true"></i></div>
+        </div>
+        <div class="post-image" style="background:#f0fff4;">
+          <div class="big-emoji">💆</div>
+          <div class="post-subtitle">Aesthetic Clinic Management System & Bus Reservation Platform</div>
+        </div>
+        <div class="post-actions">
+          <i class="ti ti-heart" aria-hidden="true"></i>
+          <i class="ti ti-message-circle" aria-hidden="true"></i>
+          <i class="ti ti-send" aria-hidden="true"></i>
+          <i class="ti ti-bookmark ml-auto" aria-hidden="true"></i>
+        </div>
+        <div class="post-likes">47 suka</div>
+        <div class="post-caption">
+          <strong>mithaismayulii</strong> Led interface development for two major web projects. Ensured 100% data integrity by managing Master Data migration into the corporate database.
+        </div>
+        <div class="post-time">PT Rayterton Indonesia · Dec 2021–Jul 2022</div>
+      </article>
+
+    </div>
+
+    <!-- ======== ABOUT VIEW ======== -->
+    <div id="view-about" class="view" role="tabpanel">
+      <div class="about-inner">
+
+        <!-- Open to Work -->
+        <div class="open-badge" style="margin-bottom:16px;">
+          <div class="open-dot"></div>
+          <div>
+            <div class="open-text">Open to Work</div>
+            <div class="open-sub">UI/UX Designer · Technical Writer · System Analyst</div>
+          </div>
+        </div>
+
+        <!-- About Me -->
+        <div class="about-card">
+          <div class="card-head">
+            <i class="ti ti-info-circle" aria-hidden="true"></i>
+            <span>About Me</span>
+          </div>
+          <div class="card-body">
+            <p class="about-text">
+              Fresh Graduate in Information Systems with a GPA of 3.84. Extensive experience in technical documentation, system analysis, and UI/UX design. Proven track record in translating complex technical concepts into clear, user-friendly documentation — TSD, SOP, and design systems. Highly skilled in collaborating with product and development teams. Strong analytical skills with high attention to detail in documenting system architectures and workflows.
+            </p>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="about-card">
+          <div class="card-head">
+            <i class="ti ti-briefcase" aria-hidden="true"></i>
+            <span>Pengalaman Kerja</span>
+          </div>
+          <div class="card-body">
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
+              <div>
+                <div class="t-title">Developer & Support (Internship)</div>
+                <div class="t-company">PT BPO Seven Inovasi Indonesia</div>
+                <div class="t-period">Jun 2025 – Sep 2025</div>
+                <div class="t-desc">Analyzed business requirements for a web-based reconciliation system and designed high fidelity UI for the Burger King reconciliation platform. Coordinated Jira ticket data and automated documentation workflows. Maintained HRIS and Payroll knowledge base articles.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="ti ti-palette" aria-hidden="true"></i></div>
+              <div>
+                <div class="t-title">Developer & Support (Internship)</div>
+                <div class="t-company">PT BPO Seven Inovasi Indonesia</div>
+                <div class="t-period">Sep 2024 – Feb 2025</div>
+                <div class="t-desc">Authored detailed TSD and SOPs for HRIS and Payroll systems. Engineered UI/UX designs for the ESS mobile application and Payroll website, ensuring brand consistency and intuitive navigation. Produced multimedia training assets including instructional blog articles and video tutorials.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="ti ti-code" aria-hidden="true"></i></div>
+              <div>
+                <div class="t-title">Software Consultant (Internship)</div>
+                <div class="t-company">PT Rayterton Indonesia</div>
+                <div class="t-period">Dec 2021 – Jul 2022</div>
+                <div class="t-desc">Led interface development for two major web-based projects: an Aesthetic Clinic Management System and a Bus Reservation platform. Ensured 100% data integrity by managing the migration and input of customer Master Data into the corporate database.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="about-card">
+          <div class="card-head">
+            <i class="ti ti-school" aria-hidden="true"></i>
+            <span>Pendidikan</span>
+          </div>
+          <div class="card-body">
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+              <div>
+                <div class="t-title">S1 Teknik Informatika</div>
+                <div class="t-company">Universitas Mercu Buana</div>
+                <div class="t-period">2022 – Present</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="ti ti-award" aria-hidden="true"></i></div>
+              <div>
+                <div class="t-title">D3 Sistem Informasi</div>
+                <div class="t-company">Universitas Bina Sarana Informatika</div>
+                <div class="t-period">2022 – 2025</div>
+                <div><span class="gpa-pill">GPA 3.84</span></div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon"><i class="ti ti-device-laptop" aria-hidden="true"></i></div>
+              <div>
+                <div class="t-title">SIJA — Sistem Informasi, Jaringan & Aplikasi</div>
+                <div class="t-company">SMKN 1 Jakarta</div>
+                <div class="t-period">2018 – 2022</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="about-card">
+          <div class="card-head">
+            <i class="ti ti-tools" aria-hidden="true"></i>
+            <span>Skills & Tools</span>
+          </div>
+          <div class="card-body">
+            <div class="skill-group-label">Design & Dev</div>
+            <div class="chips">
+              <span class="chip chip-ruby">Figma</span>
+              <span class="chip chip-ruby">UI/UX Design</span>
+              <span class="chip chip-ruby">Canva</span>
+              <span class="chip chip-ruby">Draw.io</span>
+              <span class="chip chip-ruby">HTML/CSS</span>
+            </div>
+            <div class="skill-group-label">Analysis & Documentation</div>
+            <div class="chips">
+              <span class="chip chip-gray">Business Requirements Analysis</span>
+              <span class="chip chip-gray">Workflow Mapping</span>
+              <span class="chip chip-gray">System Reverse-Engineering</span>
+              <span class="chip chip-gray">User Research</span>
+              <span class="chip chip-gray">SDLC</span>
+              <span class="chip chip-gray">Technical Support</span>
+            </div>
+            <div class="skill-group-label">Tools & Platforms</div>
+            <div class="chips">
+              <span class="chip chip-gray">Jira</span>
+              <span class="chip chip-gray">Oracle</span>
+              <span class="chip chip-gray">Trello</span>
+              <span class="chip chip-gray">Microsoft Office</span>
+            </div>
+            <div class="skill-group-label">Soft Skills</div>
+            <div class="chips">
+              <span class="chip chip-gray">Collaborative Teamwork</span>
+              <span class="chip chip-gray">Attention to Detail</span>
+              <span class="chip chip-gray">Technical Communication</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="feed-footer">
+      <div>© 2025 Mitha Ismayuli · Jakarta, Indonesia</div>
+      <div style="margin-top:4px;">
+        <a href="mailto:mithaismayulii@gmail.com">mithaismayulii@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="tel:+62895411928679">+62895411928679</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ============================================================
+       DESKTOP RIGHT SIDEBAR
+  ============================================================ -->
+  <aside class="sidebar-right" aria-label="Info tambahan">
+
+    <div class="open-badge" style="margin-bottom:14px;">
+      <div class="open-dot"></div>
+      <div>
+        <div class="open-text">Open to Work</div>
+        <div class="open-sub">Jakarta · Remote · Freelance</div>
+      </div>
+    </div>
+
+    <div class="widget-card">
+      <div class="widget-title">Stats</div>
+      <div class="mini-stat-grid">
+        <div class="mini-stat">
+          <div class="n">9</div>
+          <div class="l">Projects</div>
+        </div>
+        <div class="mini-stat">
+          <div class="n">3.84</div>
+          <div class="l">GPA</div>
+        </div>
+        <div class="mini-stat">
+          <div class="n">3</div>
+          <div class="l">Internships</div>
+        </div>
+        <div class="mini-stat">
+          <div class="n">2+</div>
+          <div class="l">Tahun Exp</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget-card">
+      <div class="widget-title">Top Tools</div>
+      <div class="tools-list">
+        <div class="tool-row">
+          <i class="ti ti-pencil" aria-hidden="true"></i>
+          <span style="font-size:12px; min-width:50px;">Figma</span>
+          <div class="tool-bar-wrap"><div class="tool-bar" style="width:90%"></div></div>
+        </div>
+        <div class="tool-row">
+          <i class="ti ti-file-text" aria-hidden="true"></i>
+          <span style="font-size:12px; min-width:50px;">TSD/SOP</span>
+          <div class="tool-bar-wrap"><div class="tool-bar" style="width:85%"></div></div>
+        </div>
+        <div class="tool-row">
+          <i class="ti ti-brand-html5" aria-hidden="true"></i>
+          <span style="font-size:12px; min-width:50px;">HTML/CSS</span>
+          <div class="tool-bar-wrap"><div class="tool-bar" style="width:70%"></div></div>
+        </div>
+        <div class="tool-row">
+          <i class="ti ti-settings" aria-hidden="true"></i>
+          <span style="font-size:12px; min-width:50px;">Jira</span>
+          <div class="tool-bar-wrap"><div class="tool-bar" style="width:75%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget-card">
+      <div class="widget-title">Kontak</div>
+      <div class="tools-list">
+        <div class="tool-row">
+          <i class="ti ti-mail" aria-hidden="true"></i>
+          <a href="mailto:mithaismayulii@gmail.com" style="font-size:11.5px; color: var(--ruby);">mithaismayulii@gmail.com</a>
+        </div>
+        <div class="tool-row">
+          <i class="ti ti-phone" aria-hidden="true"></i>
+          <span style="font-size:12px;">+62895411928679</span>
+        </div>
+        <div class="tool-row">
+          <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" style="font-size:12px; color: var(--ruby);">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- Mobile Bottom Nav -->
+<nav class="mobile-bottom-nav" aria-label="Navigasi bawah">
+  <div class="mobile-nav-inner">
+    <button class="mobile-nav-btn active" id="mnav-grid" onclick="switchTab('grid')">
+      <i class="ti ti-home" aria-hidden="true"></i>
+    </button>
+    <button class="mobile-nav-btn" id="mnav-search" onclick="switchTab('feed')">
+      <i class="ti ti-search" aria-hidden="true"></i>
+    </button>
+    <button class="mobile-nav-btn" onclick="switchTab('grid')">
+      <i class="ti ti-circle-plus" aria-hidden="true"></i>
+    </button>
+    <button class="mobile-nav-btn" id="mnav-about" onclick="switchTab('about')">
+      <i class="ti ti-video" aria-hidden="true"></i>
+    </button>
+    <button class="mobile-nav-btn">
+      <div class="mobile-nav-avatar">MI</div>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const TABS = ['grid','feed','about'];
+
+  function switchTab(tab) {
+    TABS.forEach(t => {
+      document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+      document.getElementById('tab-' + t).setAttribute('aria-selected', t === tab);
+      document.getElementById('view-' + t).classList.toggle('visible', t === tab);
+    });
+    document.querySelectorAll('.sidebar-left .nav-link').forEach(l => l.classList.remove('active'));
+    const sideMap = { grid: 0, feed: 1, about: 2 };
+    const links = document.querySelectorAll('.sidebar-left .nav-link');
+    if (links[sideMap[tab]]) links[sideMap[tab]].classList.add('active');
+    document.getElementById('main-feed').scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function switchTabSidebar(tab) {
+    switchTab(tab);
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
