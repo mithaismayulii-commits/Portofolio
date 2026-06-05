@@ -50,6 +50,26 @@
     }
 
     /* ============================================================
+       DARK MODE TOKENS
+    ============================================================ */
+    body[data-theme="dark"] {
+      --gray-50:  #121212;  
+      --gray-100: #1a1a1a;
+      --gray-200: #2c2c2c;
+      --gray-300: #444444;
+      --gray-400: #777777;
+      --gray-500: #a0a0a0;
+      --gray-600: #cccccc;
+      --gray-800: #e0e0e0;
+      --gray-900: #ffffff;  
+      --white:    #1e1e1e;  
+      
+      --ruby-soft:   #2c1412;
+      --ruby-border: #5c1e1a;
+      --shadow-card: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    /* ============================================================
        RESET
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -66,15 +86,17 @@
     img { display: block; max-width: 100%; }
 
     /* ============================================================
-       LAYOUT WRAPPER — Instagram-style centered feed
+       LAYOUT WRAPPER
     ============================================================ */
     .page-shell {
       display: grid;
-      grid-template-columns: 240px minmax(0, 480px) 240px;
+      grid-template-columns: 200px minmax(0, 1fr) 280px;
       grid-template-rows: auto 1fr;
       min-height: 100vh;
-      max-width: 1080px;
+      max-width: 1440px;
       margin: 0 auto;
+      padding: 0 24px;
+      gap: 16px;
     }
 
     /* ============================================================
@@ -83,7 +105,7 @@
     .sidebar-left {
       grid-column: 1;
       grid-row: 1 / 3;
-      padding: 32px 20px 32px 0;
+      padding: 32px 8px 32px 0;
       position: sticky;
       top: 0;
       height: 100vh;
@@ -94,7 +116,7 @@
 
     .sidebar-logo {
       font-family: var(--font-display);
-      font-size: 24px;
+      font-size: 22px;
       color: var(--gray-900);
       padding: 8px 12px 20px;
       letter-spacing: -0.5px;
@@ -103,34 +125,18 @@
     .nav-link {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 10px 14px;
+      gap: 12px;
+      padding: 10px 12px;
       border-radius: var(--radius-md);
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 400;
       color: var(--gray-600);
       transition: background var(--transition), color var(--transition);
     }
-    .nav-link i { font-size: 22px; }
+    .nav-link i { font-size: 20px; }
     .nav-link:hover { background: var(--gray-100); color: var(--gray-900); }
-    .nav-link.active { color: var(--gray-900); font-weight: 600; }
+    .nav-link.active { background: var(--gray-100); color: var(--gray-900); font-weight: 600; }
     .nav-link.active i { color: var(--ruby); }
-
-    .sidebar-hire {
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      background: var(--ruby);
-      color: var(--white);
-      border-radius: var(--radius-lg);
-      font-size: 14px;
-      font-weight: 600;
-      transition: background var(--transition), transform var(--transition);
-    }
-    .sidebar-hire:hover { background: var(--ruby-dark); transform: translateY(-1px); }
-    .sidebar-hire i { font-size: 18px; }
 
     /* ============================================================
        MAIN FEED
@@ -170,139 +176,100 @@
        PROFILE HEADER
     ============================================================ */
     .profile-header {
-      padding: 28px 24px 0;
+      padding: 32px 32px 0;
     }
 
     .profile-top {
       display: flex;
       align-items: center;
-      gap: 28px;
-      margin-bottom: 18px;
+      gap: 40px;
+      margin-bottom: 24px;
     }
 
     .avatar-wrap { flex-shrink: 0; }
     .avatar-ring {
-      width: 96px; height: 96px;
+      width: 104px; height: 104px;
       border-radius: 50%;
       background: conic-gradient(var(--ruby) 0%, #e74c3c 30%, #e67e22 60%, var(--ruby) 100%);
       padding: 3px;
       display: flex; align-items: center; justify-content: center;
     }
     .avatar-inner {
-      width: 90px; height: 90px;
+      width: 98px; height: 98px;
       border-radius: 50%;
       background: var(--white);
       padding: 2.5px;
       display: flex; align-items: center; justify-content: center;
     }
     .avatar-circle {
-      width: 85px; height: 85px;
+      width: 93px; height: 93px;
       border-radius: 50%;
       background: var(--ruby);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-display);
-      font-size: 26px;
+      font-size: 28px;
       color: var(--white);
       letter-spacing: 1px;
     }
 
     .profile-stats {
       display: flex;
-      gap: 0;
+      gap: 40px;
       flex: 1;
-      justify-content: space-around;
+      justify-content: flex-start;
     }
-    .stat-block { text-align: center; }
-    .stat-num { font-size: 18px; font-weight: 700; color: var(--gray-900); line-height: 1.2; }
-    .stat-label { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
+    .stat-block { text-align: left; }
+    .stat-num { font-size: 22px; font-weight: 700; color: var(--gray-900); line-height: 1.2; }
+    .stat-label { font-size: 13px; color: var(--gray-500); margin-top: 1px; }
 
-    .profile-bio { margin-bottom: 14px; }
+    .profile-bio { margin-bottom: 20px; }
     .bio-name {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--gray-900);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .bio-role {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--ruby);
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .bio-desc {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--gray-600);
-      line-height: 1.55;
-      margin-bottom: 8px;
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
     .bio-contacts {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
     .contact-tag {
       display: flex;
       align-items: center;
-      gap: 4px;
-      font-size: 11.5px;
+      gap: 6px;
+      font-size: 12px;
       color: var(--gray-600);
       background: var(--gray-100);
       border-radius: var(--radius-full);
-      padding: 4px 10px;
+      padding: 6px 12px;
       border: 0.5px solid var(--gray-200);
       transition: background var(--transition);
     }
     .contact-tag:hover { background: var(--ruby-soft); color: var(--ruby-dark); border-color: var(--ruby-border); }
-    .contact-tag i { font-size: 12px; color: var(--ruby); }
-
-    .profile-actions {
-      display: flex;
-      gap: 8px;
-      margin: 14px 0 18px;
-    }
-    .btn-fill {
-      flex: 1;
-      padding: 8px 0;
-      background: var(--ruby);
-      color: var(--white);
-      border-radius: var(--radius-md);
-      font-size: 13.5px;
-      font-weight: 600;
-      transition: background var(--transition), transform var(--transition);
-    }
-    .btn-fill:hover { background: var(--ruby-dark); transform: translateY(-1px); }
-    .btn-outline {
-      flex: 1;
-      padding: 8px 0;
-      background: var(--white);
-      color: var(--gray-900);
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-md);
-      font-size: 13.5px;
-      font-weight: 600;
-      transition: background var(--transition);
-    }
-    .btn-outline:hover { background: var(--gray-100); }
-    .btn-icon-sm {
-      padding: 8px 12px;
-      background: var(--white);
-      border: 1px solid var(--gray-300);
-      border-radius: var(--radius-md);
-      display: flex; align-items: center; justify-content: center;
-      transition: background var(--transition);
-    }
-    .btn-icon-sm:hover { background: var(--gray-100); }
-    .btn-icon-sm i { font-size: 18px; color: var(--gray-800); }
+    .contact-tag i { font-size: 14px; color: var(--ruby); }
 
     /* ============================================================
-       HIGHLIGHTS / STORIES
-    ============================================================ */
+       HIGHLIGHTS / STORIES (CORE SKILLS & TOOLS)
+    ============================================================ 
     .highlights-wrap {
       overflow-x: auto;
       display: flex;
-      gap: 16px;
-      padding: 16px 24px;
+      gap: 20px;
+      padding: 20px 32px;
       border-bottom: 0.5px solid var(--gray-200);
       scrollbar-width: none;
     }
@@ -316,27 +283,26 @@
       cursor: pointer;
     }
     .highlight-ring {
-      width: 64px; height: 64px;
+      width: 68px; height: 68px;
       border-radius: 50%;
       border: 2px solid var(--ruby);
       padding: 2.5px;
       display: flex; align-items: center; justify-content: center;
       transition: transform var(--transition);
     }
-    .highlight-ring:hover { transform: scale(1.06); }
-    .highlight-ring.muted { border-color: var(--gray-300); }
+    .highlight-item:hover .highlight-ring { transform: scale(1.06); }
     .highlight-emoji {
-      width: 55px; height: 55px;
+      width: 58px; height: 58px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
+      font-size: 24px;
     }
     .highlight-label {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--gray-600);
       white-space: nowrap;
       text-align: center;
-    }
+    }*/
 
     /* ============================================================
        TAB BAR
@@ -352,21 +318,22 @@
     }
     .tab-btn {
       flex: 1;
-      padding: 12px 0;
+      padding: 14px 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 500;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
       color: var(--gray-400);
-      border-bottom: 1.5px solid transparent;
+      border-bottom: 2px solid transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: color var(--transition), border-color var(--transition);
     }
-    .tab-btn i { font-size: 20px; }
+    .tab-btn i { font-size: 18px; }
     .tab-btn.active { color: var(--gray-900); border-bottom-color: var(--gray-900); }
     .tab-btn.active i { color: var(--ruby); }
-    .tab-btn span { display: none; }
 
     /* ============================================================
        GRID VIEW
@@ -376,8 +343,9 @@
 
     .grid-view-inner {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 4px;
+      padding: 4px;
     }
 
     .grid-card {
@@ -393,147 +361,202 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 10px;
+      gap: 8px;
+      padding: 16px;
       transition: transform var(--transition);
     }
     .grid-card:hover .grid-card-bg { transform: scale(1.04); }
-    .grid-card-bg .emoji { font-size: 30px; }
-    .grid-card-bg .label {
-      font-size: 9.5px;
-      font-weight: 600;
-      color: var(--gray-500);
-      text-align: center;
-      line-height: 1.3;
-    }
     .grid-overlay {
       position: absolute; inset: 0;
-      background: rgba(160,30,20,0.88);
+      background: rgba(160,30,20,0.92);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       transition: opacity var(--transition);
-      padding: 10px;
+      padding: 16px;
     }
     .grid-card:hover .grid-overlay { opacity: 1; }
     .grid-overlay span {
       color: var(--white);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     /* ============================================================
-       FEED VIEW
+       DYNAMIC IMAGE CAROUSEL
     ============================================================ */
-    .feed-post {
-      border-bottom: 0.5px solid var(--gray-200);
-      padding-bottom: 8px;
-    }
-    .post-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-    }
-    .post-avatar-sm {
-      width: 34px; height: 34px;
-      border-radius: 50%;
-      background: var(--ruby);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 10px; font-weight: 700; color: var(--white);
-      flex-shrink: 0;
-    }
-    .post-meta { flex: 1; }
-    .post-handle { font-size: 13px; font-weight: 700; color: var(--gray-900); }
-    .post-tag { font-size: 11px; color: var(--ruby); font-weight: 500; }
-    .post-more i { font-size: 18px; color: var(--gray-400); }
-
-    .post-image {
+    .post-carousel-container {
+      position: relative;
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: 1.778;
+      background: var(--gray-50);
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 12px;
+      padding: 24px;
     }
-    .post-image .big-emoji { font-size: 72px; }
-    .post-image .post-subtitle {
-      font-size: 14px;
-      color: var(--gray-500);
-      font-weight: 500;
-      text-align: center;
-      padding: 0 28px;
-      line-height: 1.5;
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      color: var(--gray-800);
+      transition: background var(--transition), color var(--transition);
+    }
+    .carousel-btn:hover { background: var(--white); color: var(--ruby); }
+    .carousel-btn.prev { left: 16px; }
+    .carousel-btn.next { right: 16px; }
+    .carousel-dots {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gray-300);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .dot.active { background: var(--ruby); transform: scale(1.2); }
+
+    /* ============================================================
+       FEED VIEW & INTERACTIVE BACK BUTTON
+    ============================================================ */
+    .feed-post {
+      border-bottom: 0.5px solid var(--gray-200);
+      padding-bottom: 24px;
+      margin-bottom: 12px;
+    }
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+    }
+    .post-avatar-sm {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--ruby);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--white);
+      flex-shrink: 0;
+    }
+    .post-meta { flex: 1; }
+    .post-handle { font-size: 14px; font-weight: 700; color: var(--gray-900); }
+    .post-tag { font-size: 12px; color: var(--ruby); font-weight: 500; }
+    
+    .post-back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ruby);
+      background: var(--ruby-soft);
+      border: 0.5px solid var(--ruby-border);
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+    }
+    .post-back-btn:hover {
+      background: var(--ruby);
+      color: var(--white);
+      border-color: var(--ruby);
     }
 
     .post-actions {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       align-items: center;
-      padding: 10px 16px 4px;
+      padding: 12px 24px 6px;
     }
-    .post-actions i { font-size: 22px; color: var(--gray-900); cursor: pointer; transition: color var(--transition); }
+    .post-actions i { font-size: 24px; color: var(--gray-900); cursor: pointer; transition: color var(--transition); }
     .post-actions i:hover { color: var(--ruby); }
     .post-actions .ml-auto { margin-left: auto; }
-    .post-likes { padding: 0 16px; font-size: 13px; font-weight: 700; color: var(--gray-900); }
-    .post-caption { padding: 3px 16px; font-size: 13px; line-height: 1.55; color: var(--gray-600); }
+    .post-likes { padding: 0 24px; font-size: 13.5px; font-weight: 700; color: var(--gray-900); }
+    .post-caption { padding: 4px 24px; font-size: 14px; line-height: 1.6; color: var(--gray-600); }
     .post-caption strong { font-weight: 700; color: var(--gray-900); }
-    .post-time { padding: 2px 16px 8px; font-size: 11px; color: var(--gray-400); }
+    .post-time { padding: 4px 24px 8px; font-size: 12px; color: var(--gray-400); }
 
     /* ============================================================
        ABOUT VIEW
     ============================================================ */
-    .about-inner { padding: 20px 20px 40px; }
+    .about-inner { padding: 24px 24px 40px; }
 
     .about-card {
       border: 0.5px solid var(--gray-200);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       box-shadow: var(--shadow-card);
     }
     .card-head {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 13px 16px;
+      padding: 14px 20px;
       background: var(--ruby-soft);
       border-bottom: 0.5px solid var(--ruby-border);
     }
     .card-head i { font-size: 18px; color: var(--ruby); }
-    .card-head span { font-size: 14px; font-weight: 700; color: var(--ruby-dark); }
-    .card-body { padding: 14px 16px; background: var(--white); }
+    .card-head span { font-size: 14.5px; font-weight: 700; color: var(--ruby-dark); }
+    .card-body { padding: 18px 20px; background: var(--white); }
 
     .about-text {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--gray-600);
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     .timeline-item {
       display: flex;
-      gap: 14px;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
+      gap: 16px;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
       border-bottom: 0.5px solid var(--gray-100);
     }
     .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .timeline-icon {
-      width: 38px; height: 38px;
+      width: 40px; height: 40px;
       border-radius: var(--radius-md);
       background: var(--ruby-soft);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .timeline-icon i { font-size: 17px; color: var(--ruby); }
-    .t-title { font-size: 14px; font-weight: 700; color: var(--gray-900); line-height: 1.3; }
-    .t-company { font-size: 13px; color: var(--ruby); font-weight: 500; margin-top: 1px; }
-    .t-period { font-size: 11.5px; color: var(--gray-400); margin-top: 2px; }
-    .t-desc { font-size: 12.5px; color: var(--gray-600); margin-top: 5px; line-height: 1.5; }
+    .timeline-icon i { font-size: 18px; color: var(--ruby); }
+    .t-title { font-size: 15px; font-weight: 700; color: var(--gray-900); line-height: 1.3; }
+    .t-company { font-size: 13.5px; color: var(--ruby); font-weight: 500; margin-top: 1px; }
+    .t-period { font-size: 12px; color: var(--gray-400); margin-top: 3px; }
+    .t-desc { font-size: 13px; color: var(--gray-600); margin-top: 6px; line-height: 1.55; }
     .gpa-pill {
       display: inline-block;
       background: var(--ruby-soft);
@@ -542,7 +565,7 @@
       font-weight: 700;
       padding: 2px 8px;
       border-radius: var(--radius-full);
-      margin-top: 3px;
+      margin-top: 4px;
       border: 0.5px solid var(--ruby-border);
     }
 
@@ -552,15 +575,15 @@
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--gray-400);
-      margin-bottom: 8px;
-      margin-top: 12px;
+      margin-bottom: 10px;
+      margin-top: 16px;
     }
     .skill-group-label:first-child { margin-top: 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
     .chip {
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: var(--radius-full);
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 500;
     }
     .chip-ruby { background: var(--ruby-soft); color: var(--ruby-dark); border: 0.5px solid var(--ruby-border); }
@@ -572,7 +595,7 @@
     .sidebar-right {
       grid-column: 3;
       grid-row: 1 / 3;
-      padding: 32px 0 32px 20px;
+      padding: 32px 0;
       position: sticky;
       top: 0;
       height: 100vh;
@@ -686,84 +709,48 @@
     }
 
     /* ============================================================
-       ANIMATIONS
+       RESPONSIVE MODES
     ============================================================ */
+    @media (max-width: 1024px) {
+      .page-shell {
+        grid-template-columns: 72px minmax(0, 1fr);
+        padding: 0 12px;
+      }
+      .sidebar-left {
+        align-items: center;
+        padding-right: 0;
+      }
+      .sidebar-logo, .nav-link span, .sidebar-hire span { display: none; }
+      .nav-link { padding: 12px; justify-content: center; }
+      .sidebar-right { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .page-shell { grid-template-columns: 1fr; padding: 0; }
+      .sidebar-left { display: none; }
+      .main-feed { border: none; padding-bottom: 64px; }
+      .mobile-topbar { display: flex; }
+      .mobile-bottom-nav { display: block; }
+      .tab-bar { position: sticky; top: 53px; }
+      .profile-header { padding: 20px 16px 0; }
+      .profile-top { gap: 20px; }
+      .profile-stats { gap: 20px; }
+      .highlights-wrap { padding: 14px 16px; }
+      .post-carousel-container { aspect-ratio: 1.2; }
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .view.visible { animation: fadeUp 0.28s ease; }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .profile-header { animation: slideIn 0.35s ease; }
-
-    /* ============================================================
-       RESPONSIVE — TABLET (max 900px)
-    ============================================================ */
-    @media (max-width: 900px) {
-      .page-shell {
-        grid-template-columns: 72px minmax(0, 1fr);
-        grid-template-rows: auto;
-        max-width: 100%;
-      }
-      .sidebar-left {
-        grid-column: 1;
-        padding: 24px 0;
-        align-items: center;
-      }
-      .sidebar-logo { display: none; }
-      .nav-link { padding: 12px; justify-content: center; }
-      .nav-link span { display: none; }
-      .sidebar-hire span { display: none; }
-      .sidebar-hire { padding: 12px; justify-content: center; margin-top: auto; }
-      .sidebar-right { display: none; }
-      .main-feed { grid-column: 2; border-right: none; }
-      .tab-btn span { display: inline; }
-    }
-
-    /* ============================================================
-       RESPONSIVE — MOBILE (max 600px)
-    ============================================================ */
-    @media (max-width: 600px) {
-      .page-shell {
-        grid-template-columns: 1fr;
-      }
-      .sidebar-left { display: none; }
-      .sidebar-right { display: none; }
-      .main-feed {
-        grid-column: 1;
-        border: none;
-        padding-bottom: 70px;
-      }
-      .mobile-topbar { display: flex; }
-      .mobile-bottom-nav { display: block; }
-      .tab-bar {
-        position: sticky;
-        top: 53px;
-      }
-      .tab-btn span { display: none; }
-      .profile-header { padding: 20px 16px 0; }
-      .highlights-wrap { padding: 14px 16px; }
-      .avatar-ring { width: 82px; height: 82px; }
-      .avatar-inner { width: 76px; height: 76px; }
-      .avatar-circle { width: 71px; height: 71px; font-size: 22px; }
-      .profile-stats { gap: 0; }
-      .stat-num { font-size: 16px; }
-    }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
     .feed-footer {
       text-align: center;
-      padding: 24px 16px 32px;
-      font-size: 11.5px;
+      padding: 32px 16px;
+      font-size: 12px;
       color: var(--gray-400);
       border-top: 0.5px solid var(--gray-200);
-      line-height: 1.7;
     }
     .feed-footer a { color: var(--ruby); }
   </style>
@@ -772,21 +759,18 @@
 <body>
 <div class="page-shell">
 
-  <!-- ============================================================
-       DESKTOP LEFT SIDEBAR
-  ============================================================ -->
   <nav class="sidebar-left" aria-label="Navigasi utama">
     <div class="sidebar-logo">mithaismayulii</div>
 
-    <a href="#" class="nav-link active" onclick="switchTabSidebar('grid'); return false;">
+    <a href="#" class="nav-link active" id="side-grid" onclick="switchTab('grid'); return false;">
       <i class="ti ti-home" aria-hidden="true"></i>
       <span>Beranda</span>
     </a>
-    <a href="#" class="nav-link" onclick="switchTabSidebar('feed'); return false;">
+    <a href="#" class="nav-link" id="side-feed" onclick="switchTab('feed'); return false;">
       <i class="ti ti-layout-list" aria-hidden="true"></i>
       <span>Projects</span>
     </a>
-    <a href="#" class="nav-link" onclick="switchTabSidebar('about'); return false;">
+    <a href="#" class="nav-link" id="side-about" onclick="switchTab('about'); return false;">
       <i class="ti ti-user" aria-hidden="true"></i>
       <span>About</span>
     </a>
@@ -794,19 +778,14 @@
       <i class="ti ti-mail" aria-hidden="true"></i>
       <span>Kontak</span>
     </a>
-
-    <a href="mailto:mithaismayulii@gmail.com" class="sidebar-hire">
-      <i class="ti ti-send" aria-hidden="true"></i>
-      <span>Hire Me</span>
+    <a href="#" class="nav-link" onclick="toggleDarkMode(); return false;">
+      <i class="ti ti-moon" id="theme-icon"></i>
+      <span id="theme-text">Dark Mode</span>
     </a>
   </nav>
 
-  <!-- ============================================================
-       MAIN FEED
-  ============================================================ -->
   <main class="main-feed" id="main-feed">
 
-    <!-- Mobile Top Bar -->
     <header class="mobile-topbar" aria-label="Header mobile">
       <div class="handle">mithaismayulii</div>
       <div class="icons">
@@ -815,7 +794,6 @@
       </div>
     </header>
 
-    <!-- Profile Header -->
     <section class="profile-header" aria-label="Profil">
       <div class="profile-top">
         <div class="avatar-wrap">
@@ -853,68 +831,43 @@
           <a href="mailto:mithaismayulii@gmail.com" class="contact-tag">
             <i class="ti ti-mail" aria-hidden="true"></i>mithaismayulii@gmail.com
           </a>
-          <a href="tel:+62895411928679" class="contact-tag">
-            <i class="ti ti-phone" aria-hidden="true"></i>+62895411928679
+          <a href="https://wa.me/62895411928679?text=Halo%20Mitha,%20saya%20melihat%20portfolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi." target="_blank" rel="noopener" class="contact-tag" style="font-weight: 600; color: #25D366;">
+            <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>WhatsApp Chat
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-tag">
+          <a href="https://www.linkedin.com/in/mitha-ismayuli-3a9510221?trk=contact-info" target="_blank" rel="noopener" class="contact-tag">
             <i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn
           </a>
-          <span class="contact-tag">
-            <i class="ti ti-map-pin" aria-hidden="true"></i>Jakarta
-          </span>
         </div>
-      </div>
-
-      <div class="profile-actions">
-        <a href="mailto:mithaismayulii@gmail.com" class="btn-fill">Hire Me</a>
-        <button class="btn-outline" onclick="alert('Hubungi Mitha untuk mendapatkan CV lengkap!')">Download CV</button>
-        <button class="btn-icon-sm" onclick="navigator.share ? navigator.share({title:'Mitha Ismayuli Portfolio',url:location.href}) : navigator.clipboard.writeText(location.href).then(()=>alert('Link disalin!'))">
-          <i class="ti ti-share" aria-hidden="true"></i>
-        </button>
       </div>
     </section>
-
-    <!-- Highlights / Stories -->
+ <!--
     <section class="highlights-wrap" aria-label="Highlight">
-      <div class="highlight-item">
-        <div class="highlight-ring">
-          <div class="highlight-emoji" style="background:#fdf0ee;">🎨</div>
-        </div>
-        <div class="highlight-label">UI/UX</div>
+      <div class="highlight-item" onclick="switchTab('grid')">
+        <div class="highlight-ring"><div class="highlight-emoji" style="background:#fdf0ee;">🎨</div></div>
+        <div class="highlight-label">Figma</div>
       </div>
-      <div class="highlight-item">
-        <div class="highlight-ring">
-          <div class="highlight-emoji" style="background:#f0f4ff;">📄</div>
-        </div>
+      <div class="highlight-item" onclick="switchTab('grid')">
+        <div class="highlight-ring"><div class="highlight-emoji" style="background:#f0f4ff;">📄</div></div>
         <div class="highlight-label">Tech Docs</div>
       </div>
-      <div class="highlight-item">
-        <div class="highlight-ring">
-          <div class="highlight-emoji" style="background:#f0fff4;">💼</div>
-        </div>
-        <div class="highlight-label">BPO Seven</div>
+      <div class="highlight-item" onclick="switchTab('grid')">
+        <div class="highlight-ring"><div class="highlight-emoji" style="background:#f0fff4;">📊</div></div>
+        <div class="highlight-label">Sys Analysis</div>
       </div>
-      <div class="highlight-item">
-        <div class="highlight-ring">
-          <div class="highlight-emoji" style="background:#fff8f0;">🖥️</div>
-        </div>
-        <div class="highlight-label">Web Dev</div>
+      <div class="highlight-item" onclick="switchTab('grid')">
+        <div class="highlight-ring"><div class="highlight-emoji" style="background:#fff8f0;">🖥️</div></div>
+        <div class="highlight-label">HTML / CSS</div>
       </div>
-      <div class="highlight-item">
-        <div class="highlight-ring muted">
-          <div class="highlight-emoji" style="background:#f5f5f5;">🎓</div>
-        </div>
-        <div class="highlight-label">Edu</div>
+      <div class="highlight-item" onclick="switchTab('about')">
+        <div class="highlight-ring"><div class="highlight-emoji" style="background:#f5f5f5;">🇬🇧</div></div>
+        <div class="highlight-label">Business EN</div>
       </div>
-      <div class="highlight-item">
-        <div class="highlight-ring muted">
-          <div class="highlight-emoji" style="background:#fdf0ee;">✍️</div>
-        </div>
-        <div class="highlight-label">Writing</div>
-      </div>
+      <div class="highlight-item" onclick="switchTab('about')">
+        <div class="highlight-ring"><div class="highlight-emoji" style="background:#fdf0ee;">🎓</div></div>
+        <div class="highlight-label">Info Systems</div>
+      </div>-->
     </section>
 
-    <!-- Tab Bar -->
     <div class="tab-bar" role="tablist" aria-label="Tampilan konten">
       <button class="tab-btn active" id="tab-grid" role="tab" aria-selected="true" onclick="switchTab('grid')">
         <i class="ti ti-layout-grid" aria-hidden="true"></i>
@@ -930,173 +883,315 @@
       </button>
     </div>
 
-    <!-- ======== GRID VIEW ======== -->
     <div id="view-grid" class="view visible" role="tabpanel">
       <div class="grid-view-inner">
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#fdf0ee;">
-            <div class="emoji">🍔</div>
-            <div class="label">Burger King Recon UI</div>
+        <div class="grid-card" onclick="navigateToProject('project-bk-recon')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="recon.png" alt="Burger King Recon Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="grid-overlay"><span>Burger King Reconciliation System — High Fidelity UI Design</span></div>
         </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#f0f4ff;">
-            <div class="emoji">📱</div>
-            <div class="label">ESS Mobile App</div>
+        <div class="grid-card" onclick="navigateToProject('project-ess-app')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="ess.png" alt="ESS Mobile App Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="grid-overlay"><span>Employee Self Service Mobile App — UI/UX Design</span></div>
         </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#fff0fb;">
-            <div class="emoji">💸</div>
-            <div class="label">Payroll Website UI</div>
+        <div class="grid-card" onclick="navigateToProject('project-ia-mapping')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="mapping.png" alt="HRIS IA Mapping Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <div class="grid-overlay"><span>Payroll Website — Brand-Consistent UI/UX Design</span></div>
+          <div class="grid-overlay"><span>HRIS Information Architecture (IA) &amp; Menu Mapping</span></div>
         </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#f0fff4;">
-            <div class="emoji">💆</div>
-            <div class="label">Aesthetic Clinic</div>
+        <div class="grid-card" onclick="navigateToProject('project-aesthetic-clinic')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="clinic.png" alt="Aesthetic Clinic Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="grid-overlay"><span>Aesthetic Clinic Management System — Web Interface</span></div>
         </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#fff8f0;">
-            <div class="emoji">🚌</div>
-            <div class="label">Bus Reservation</div>
-          </div>
-          <div class="grid-overlay"><span>Bus Reservation Platform — Interface Development</span></div>
+        <div class="grid-card" onclick="navigateToProject('project-bus-reservation')">
+        <div class="grid-card-bg" style="padding: 0; background: none;">
+          <img src="bus.png" alt="Bus Reservation Preview" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
+        <div class="grid-overlay"><span>Bus Reservation Platform — Interface Development</span></div>
+      </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#f0f8ff;">
-            <div class="emoji">📋</div>
-            <div class="label">TSD & SOP Docs</div>
+        <div class="grid-card" onclick="navigateToProject('project-tsd-sop')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="doc.png" alt="TSD & SOP Document Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="grid-overlay"><span>Technical Specification Documents & SOPs for HRIS & Payroll</span></div>
         </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#fdf0ee;">
-            <div class="emoji">🔧</div>
-            <div class="label">HRIS Knowledge Base</div>
+        <div class="grid-card" onclick="navigateToProject('project-hris-kb')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="knowledgebase.png" alt="HRIS Knowledge Base Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="grid-overlay"><span>Technical Articles & Knowledge Base for HRIS System</span></div>
         </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#f5f0ff;">
-            <div class="emoji">🎬</div>
-            <div class="label">Training Assets</div>
+        <div class="grid-card" onclick="navigateToProject('project-training-assets')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="asset.png" alt="Training Assets Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="grid-overlay"><span>Multimedia Training Assets & Video Tutorials for Workshops</span></div>
         </div>
 
-        <div class="grid-card">
-          <div class="grid-card-bg" style="background:#f0fff8;">
-            <div class="emoji">🗂️</div>
-            <div class="label">Jira Automation</div>
+        <div class="grid-card" onclick="navigateToProject('project-jira-automation')">
+          <div class="grid-card-bg" style="padding: 0; background: none;">
+            <img src="automation.png" alt="Jira Automation Preview" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
           <div class="grid-overlay"><span>Automated Documentation Workflow via Jira Platform</span></div>
         </div>
-
       </div>
     </div>
 
-    <!-- ======== FEED VIEW ======== -->
     <div id="view-feed" class="view" role="tabpanel">
 
-      <article class="feed-post">
+      <article class="feed-post" id="project-bk-recon" style="scroll-margin-top: 60px;">
         <div class="post-header">
           <div class="post-avatar-sm">MI</div>
           <div class="post-meta">
             <div class="post-handle">mithaismayulii</div>
-            <div class="post-tag">#UIUXDesign · Burger King Reconciliation</div>
+            <div class="post-tag">#UIUXDesign · Burger King Recon UI</div>
           </div>
-          <div class="post-more"><i class="ti ti-dots" aria-hidden="true"></i></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
         </div>
-        <div class="post-image" style="background:#fdf0ee;">
-          <div class="big-emoji">🍔</div>
-          <div class="post-subtitle">Burger King Web Reconciliation System — High Fidelity UI Design</div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-bk-recon')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-bk-recon')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="recon.png" alt="Burger King Recon System — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="recon2.png" alt="Burger King Recon System — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
         </div>
         <div class="post-actions">
-          <i class="ti ti-heart" aria-hidden="true" title="Suka"></i>
-          <i class="ti ti-message-circle" aria-hidden="true" title="Komentar"></i>
-          <i class="ti ti-send" aria-hidden="true" title="Bagikan"></i>
-          <i class="ti ti-bookmark ml-auto" aria-hidden="true" title="Simpan"></i>
+          <i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i>
         </div>
         <div class="post-likes">84 suka</div>
-        <div class="post-caption">
-          <strong>mithaismayulii</strong> Analyzed business requirements &amp; designed high fidelity UI for Burger King's web-based reconciliation platform. Coordinated Jira ticket synchronization &amp; automated documentation workflows.
-        </div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Designed high fidelity UI for Burger King's web-based reconciliation platform.</div>
         <div class="post-time">PT BPO Seven Inovasi Indonesia · Jun–Sep 2025</div>
       </article>
 
-      <article class="feed-post">
+      <article class="feed-post" id="project-ess-app" style="scroll-margin-top: 60px;">
         <div class="post-header">
           <div class="post-avatar-sm">MI</div>
           <div class="post-meta">
             <div class="post-handle">mithaismayulii</div>
-            <div class="post-tag">#MobileDesign · ESS App & Payroll</div>
+            <div class="post-tag">#UIUXDesign · ESS Mobile App</div>
           </div>
-          <div class="post-more"><i class="ti ti-dots" aria-hidden="true"></i></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
         </div>
-        <div class="post-image" style="background:#f0f4ff;">
-          <div class="big-emoji">📱</div>
-          <div class="post-subtitle">ESS Mobile App & Payroll Website — UI/UX with Brand Consistency</div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-ess-app')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-ess-app')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="ess.png" alt="Employee Self Service Mobile App — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="ess2.png" alt="Employee Self Service Mobile App — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
         </div>
         <div class="post-actions">
-          <i class="ti ti-heart" aria-hidden="true"></i>
-          <i class="ti ti-message-circle" aria-hidden="true"></i>
-          <i class="ti ti-send" aria-hidden="true"></i>
-          <i class="ti ti-bookmark ml-auto" aria-hidden="true"></i>
+          <i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i>
         </div>
         <div class="post-likes">61 suka</div>
-        <div class="post-caption">
-          <strong>mithaismayulii</strong> Engineered UI/UX for ESS mobile app &amp; Payroll website. Authored TSD &amp; SOPs for HRIS &amp; Payroll systems. Produced multimedia training assets &amp; video tutorials for large-scale workshops.
-        </div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Engineered intuitive interface structures &amp; seamless screen user flows for Employee Self Service mobile application.</div>
         <div class="post-time">PT BPO Seven Inovasi Indonesia · Sep 2024–Feb 2025</div>
       </article>
 
-      <article class="feed-post">
+       <article class="feed-post" id="project-ia-mapping" style="scroll-margin-top: 60px;">
         <div class="post-header">
           <div class="post-avatar-sm">MI</div>
-          <div class="post-meta">
-            <div class="post-handle">mithaismayulii</div>
-            <div class="post-tag">#WebDevelopment · Aesthetic Clinic & Bus Reservation</div>
+          <div class="post-meta"><div class="post-handle">mithaismayulii</div><div class="post-tag">#SystemAnalysis · IA Mapping</div></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
+        </div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-ia-mapping')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-ia-mapping')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="mapping.png" alt="Information Architecture Diagram — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="mapping2.png" alt="Database Parent Relational Mapping Excel — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
           </div>
-          <div class="post-more"><i class="ti ti-dots" aria-hidden="true"></i></div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
         </div>
-        <div class="post-image" style="background:#f0fff4;">
-          <div class="big-emoji">💆</div>
-          <div class="post-subtitle">Aesthetic Clinic Management System & Bus Reservation Platform</div>
+        <div class="post-actions"><i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i></div>
+        <div class="post-likes">49 suka</div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Analyzed, structured, and mapped complex multi-level HRIS &amp; Payroll menu hierarchies, establishing database Parent ID relations and system information architecture.</div>
+        <div class="post-time">PT BPO Seven Inovasi Indonesia · Sep 2024–Feb 2025</div>
+      </article>
+
+       <article class="feed-post" id="project-aesthetic-clinic" style="scroll-margin-top: 60px;">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta"><div class="post-handle">mithaismayulii</div><div class="post-tag">#WebDev · Aesthetic Clinic System</div></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
         </div>
-        <div class="post-actions">
-          <i class="ti ti-heart" aria-hidden="true"></i>
-          <i class="ti ti-message-circle" aria-hidden="true"></i>
-          <i class="ti ti-send" aria-hidden="true"></i>
-          <i class="ti ti-bookmark ml-auto" aria-hidden="true"></i>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-aesthetic-clinic')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-aesthetic-clinic')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="clinic.png" alt="Aesthetic Clinic System — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="clinic2.png" alt="Aesthetic Clinic System — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
         </div>
+        <div class="post-actions"><i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i></div>
         <div class="post-likes">47 suka</div>
-        <div class="post-caption">
-          <strong>mithaismayulii</strong> Led interface development for two major web projects. Ensured 100% data integrity by managing Master Data migration into the corporate database.
-        </div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Front-end web development interface setup and database master structures management for clinical service workflows.</div>
         <div class="post-time">PT Rayterton Indonesia · Dec 2021–Jul 2022</div>
       </article>
 
+       <article class="feed-post" id="project-bus-reservation" style="scroll-margin-top: 60px;">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta"><div class="post-handle">mithaismayulii</div><div class="post-tag">#WebDev · Bus Reservation Platform</div></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
+        </div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-bus-reservation')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-bus-reservation')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="bus.png" alt="Bus Reservation Platform — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="bus2.png" alt="Bus Reservation Platform — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
+        </div>
+        <div class="post-actions"><i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i></div>
+        <div class="post-likes">53 suka</div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Handled front-end interface adjustments and transactional data loading routines into enterprise backbones.</div>
+        <div class="post-time">PT Rayterton Indonesia · Dec 2021–Jul 2022</div>
+      </article>
+
+       <article class="feed-post" id="project-tsd-sop" style="scroll-margin-top: 60px;">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta"><div class="post-handle">mithaismayulii</div><div class="post-tag">#TechDocs · TSD & SOP Engineering</div></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
+        </div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-tsd-sop')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-tsd-sop')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="doc.png" alt="TSD Table of Contents — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="doc2.png" alt="TSD Document Formatting — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
+        </div>
+        <div class="post-actions"><i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i></div>
+        <div class="post-likes">42 suka</div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Authored, structured, and formatted detailed technical specification documents and precise step-by-step SOPs for corporate systems.</div>
+        <div class="post-time">PT BPO Seven Inovasi Indonesia · Sep 2024–Feb 2025</div>
+      </article>
+
+       <article class="feed-post" id="project-hris-kb" style="scroll-margin-top: 60px;">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta"><div class="post-handle">mithaismayulii</div><div class="post-tag">#Documentation · HRIS Knowledge Base</div></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
+        </div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-hris-kb')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-hris-kb')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="knowledgebase.png" alt="HRIS Knowledge Base — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="knowledgebase2.png" alt="HRIS Knowledge Base — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
+        </div>
+        <div class="post-actions"><i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i></div>
+        <div class="post-likes">38 suka</div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Built modular technical wikis and self-service guidelines for payroll software maintenance teams.</div>
+        <div class="post-time">PT BPO Seven Inovasi Indonesia · Jun–Sep 2025</div>
+      </article>
+
+       <article class="feed-post" id="project-training-assets" style="scroll-margin-top: 60px;">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta"><div class="post-handle">mithaismayulii</div><div class="post-tag">#Multimedia · Workshop Training Assets</div></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
+        </div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-training-assets')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-training-assets')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="asset.png" alt="Training Deck Cover — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="asset2.png" alt="Video Tutorial Mockup — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
+        </div>
+        <div class="post-actions"><i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i></div>
+        <div class="post-likes">51 suka</div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Structured professional instructional video guides, walkthrough manuals, and presentation materials supporting large-scale corporate system roll-outs.</div>
+        <div class="post-time">PT BPO Seven Inovasi Indonesia · Sep 2024–Feb 2025</div>
+      </article>
+
+       <article class="feed-post" id="project-jira-automation" style="scroll-margin-top: 60px;">
+        <div class="post-header">
+          <div class="post-avatar-sm">MI</div>
+          <div class="post-meta"><div class="post-handle">mithaismayulii</div><div class="post-tag">#Automation · Jira Document Workflows</div></div>
+          <button class="post-back-btn" onclick="backToGrid()"><i class="ti ti-arrow-left"></i>Kembali</button>
+        </div>
+        <div class="post-carousel-container">
+          <button class="carousel-btn prev" onclick="prevSlide('project-jira-automation')"><i class="ti ti-chevron-left"></i></button>
+          <button class="carousel-btn next" onclick="nextSlide('project-jira-automation')"><i class="ti ti-chevron-right"></i></button>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="automation.png" alt="Jira Automation Workflow — Slide 1" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="carousel-slide">
+              <img src="automation2.png" alt="Jira Automation Workflow — Slide 2" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+          </div>
+          <div class="carousel-dots"><div class="dot active"></div><div class="dot"></div></div>
+        </div>
+        <div class="post-actions"><i class="ti ti-heart"></i><i class="ti ti-message-circle"></i><i class="ti ti-send"></i><i class="ti ti-bookmark ml-auto"></i></div>
+        <div class="post-likes">59 suka</div>
+        <div class="post-caption"><strong>mithaismayulii</strong> Organized ticket schemas, synchronized logs, and optimized internal documentation tracking triggers using Jira workflows.</div>
+        <div class="post-time">PT BPO Seven Inovasi Indonesia · Jun–Sep 2025</div>
+      </article>
     </div>
 
-    <!-- ======== ABOUT VIEW ======== -->
     <div id="view-about" class="view" role="tabpanel">
       <div class="about-inner">
 
-        <!-- Open to Work -->
         <div class="open-badge" style="margin-bottom:16px;">
           <div class="open-dot"></div>
           <div>
@@ -1105,7 +1200,6 @@
           </div>
         </div>
 
-        <!-- About Me -->
         <div class="about-card">
           <div class="card-head">
             <i class="ti ti-info-circle" aria-hidden="true"></i>
@@ -1118,7 +1212,6 @@
           </div>
         </div>
 
-        <!-- Experience -->
         <div class="about-card">
           <div class="card-head">
             <i class="ti ti-briefcase" aria-hidden="true"></i>
@@ -1155,7 +1248,6 @@
           </div>
         </div>
 
-        <!-- Education -->
         <div class="about-card">
           <div class="card-head">
             <i class="ti ti-school" aria-hidden="true"></i>
@@ -1167,7 +1259,7 @@
               <div>
                 <div class="t-title">S1 Teknik Informatika</div>
                 <div class="t-company">Universitas Mercu Buana</div>
-                <div class="t-period">2022 – Present</div>
+                <div class="t-period">2026 – Present</div>
               </div>
             </div>
             <div class="timeline-item">
@@ -1190,7 +1282,6 @@
           </div>
         </div>
 
-        <!-- Skills -->
         <div class="about-card">
           <div class="card-head">
             <i class="ti ti-tools" aria-hidden="true"></i>
@@ -1233,21 +1324,17 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <footer class="feed-footer">
-      <div>© 2025 Mitha Ismayuli · Jakarta, Indonesia</div>
+      <div>© 2026 Mitha Ismayuli · Jakarta, Indonesia</div>
       <div style="margin-top:4px;">
         <a href="mailto:mithaismayulii@gmail.com">mithaismayulii@gmail.com</a>
         &nbsp;·&nbsp;
-        <a href="tel:+62895411928679">+62895411928679</a>
+        <a href="https://wa.me/62895411928679" target="_blank">WhatsApp Chat</a>
       </div>
     </footer>
 
   </main>
 
-  <!-- ============================================================
-       DESKTOP RIGHT SIDEBAR
-  ============================================================ -->
   <aside class="sidebar-right" aria-label="Info tambahan">
 
     <div class="open-badge" style="margin-bottom:14px;">
@@ -1306,68 +1393,125 @@
       </div>
     </div>
 
-    <div class="widget-card">
-      <div class="widget-title">Kontak</div>
-      <div class="tools-list">
-        <div class="tool-row">
-          <i class="ti ti-mail" aria-hidden="true"></i>
-          <a href="mailto:mithaismayulii@gmail.com" style="font-size:11.5px; color: var(--ruby);">mithaismayulii@gmail.com</a>
-        </div>
-        <div class="tool-row">
-          <i class="ti ti-phone" aria-hidden="true"></i>
-          <span style="font-size:12px;">+62895411928679</span>
-        </div>
-        <div class="tool-row">
-          <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
-          <a href="https://linkedin.com" target="_blank" rel="noopener" style="font-size:12px; color: var(--ruby);">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-
   </aside>
 
 </div>
 
-<!-- Mobile Bottom Nav -->
 <nav class="mobile-bottom-nav" aria-label="Navigasi bawah">
   <div class="mobile-nav-inner">
     <button class="mobile-nav-btn active" id="mnav-grid" onclick="switchTab('grid')">
       <i class="ti ti-home" aria-hidden="true"></i>
     </button>
-    <button class="mobile-nav-btn" id="mnav-search" onclick="switchTab('feed')">
+    <button class="mobile-nav-btn" id="mnav-feed" onclick="switchTab('feed')">
       <i class="ti ti-search" aria-hidden="true"></i>
     </button>
     <button class="mobile-nav-btn" onclick="switchTab('grid')">
       <i class="ti ti-circle-plus" aria-hidden="true"></i>
     </button>
     <button class="mobile-nav-btn" id="mnav-about" onclick="switchTab('about')">
-      <i class="ti ti-video" aria-hidden="true"></i>
+      <i class="ti ti-user" aria-hidden="true"></i>
     </button>
-    <button class="mobile-nav-btn">
+    <button class="mobile-nav-btn" onclick="switchTab('about')">
       <div class="mobile-nav-avatar">MI</div>
     </button>
   </div>
 </nav>
 
 <script>
-  const TABS = ['grid','feed','about'];
+  const TABS = ['grid', 'feed', 'about'];
 
   function switchTab(tab) {
     TABS.forEach(t => {
-      document.getElementById('tab-' + t).classList.toggle('active', t === tab);
-      document.getElementById('tab-' + t).setAttribute('aria-selected', t === tab);
-      document.getElementById('view-' + t).classList.toggle('visible', t === tab);
+      const btn = document.getElementById('tab-' + t);
+      const view = document.getElementById('view-' + t);
+      
+      if(btn) {
+        btn.classList.toggle('active', t === tab);
+        btn.setAttribute('aria-selected', t === tab);
+      }
+      if(view) {
+        view.classList.toggle('visible', t === tab);
+      }
     });
+    
     document.querySelectorAll('.sidebar-left .nav-link').forEach(l => l.classList.remove('active'));
-    const sideMap = { grid: 0, feed: 1, about: 2 };
-    const links = document.querySelectorAll('.sidebar-left .nav-link');
-    if (links[sideMap[tab]]) links[sideMap[tab]].classList.add('active');
-    document.getElementById('main-feed').scrollTo({ top: 0, behavior: 'smooth' });
+    const sideBtn = document.getElementById('side-' + tab);
+    if (sideBtn) sideBtn.classList.add('active');
+
+    document.querySelectorAll('.mobile-bottom-nav .mobile-nav-btn').forEach(b => b.classList.remove('active'));
+    const mBtn = document.getElementById('mnav-' + tab);
+    if (mBtn) mBtn.classList.add('active');
+    
+    window.scrollTo({ top: 0 });
+    const mainFeed = document.getElementById('main-feed');
+    if(mainFeed) mainFeed.scrollTop = 0;
   }
 
-  function switchTabSidebar(tab) {
-    switchTab(tab);
-    window.scrollTo({ top: 200, behavior: 'smooth' });
+  function navigateToProject(postId) {
+    switchTab('feed');
+    
+    setTimeout(() => {
+      const targetProject = document.getElementById(postId);
+      if (targetProject) {
+        targetProject.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  }
+
+  function backToGrid() {
+    switchTab('grid');
+  }
+
+  const postIndices = {};
+
+  function updateCarousel(postId, direction) {
+    const post = document.getElementById(postId);
+    if (!post) return;
+    
+    const track = post.querySelector('.carousel-track');
+    const slides = Array.from(post.querySelectorAll('.carousel-slide'));
+    const dots = Array.from(post.querySelectorAll('.dot'));
+    const totalSlides = slides.length;
+
+    if (totalSlides <= 1) return;
+
+    if (!postIndices[postId]) {
+      postIndices[postId] = 0;
+    }
+
+    if (direction === 'next') {
+      postIndices[postId] = (postIndices[postId] + 1) % totalSlides;
+    } else if (direction === 'prev') {
+      postIndices[postId] = (postIndices[postId] - 1 + totalSlides) % totalSlides;
+    }
+
+    const index = postIndices[postId];
+    if (track) track.style.transform = `translateX(-${index * 100}%)`;
+
+    if (dots.length > 0) {
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === index);
+      });
+    }
+  }
+
+  function nextSlide(postId) { updateCarousel(postId, 'next'); }
+  function prevSlide(postId) { updateCarousel(postId, 'prev'); }
+
+  function toggleDarkMode() {
+    const body = document.body;
+    const icon = document.getElementById('theme-icon');
+    const text = document.getElementById('theme-text');
+    
+    if (body.getAttribute('data-theme') === 'dark') {
+      body.removeAttribute('data-theme');
+      if(icon) icon.className = 'ti ti-moon';
+      if(text) text.textContent = 'Dark Mode';
+    } else {
+      body.setAttribute('data-theme', 'dark');
+      if(icon) icon.className = 'ti ti-sun';
+      if(text) text.textContent = 'Light Mode';
+    }
   }
 </script>
 </body>
